@@ -16,5 +16,15 @@ class Conversion {
         byte d = 30;
         int result = c * d; // byte + byte = int
         System.out.println("RESULT: " + result);
+
+        // quiz 1-9
+        char ch = 'a';
+        char r = (char)(ch + 1);
+        System.out.println(r);
+
+        // quiz 1-10
+        byte b1=5,b2=6;
+        byte b3=(byte)(b1+b2);
+        System.out.println(b3);
     }
 }
