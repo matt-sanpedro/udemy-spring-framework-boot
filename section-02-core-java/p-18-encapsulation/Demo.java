@@ -1,7 +1,7 @@
 class Human {
     // private - accessible only in the same class
     // EVERY time create an instance variable, make it private
-    // subsequently, the class will have public methods to access these variables
+    // subsequently, the class will have public methods to access these variables (the class encapsulates the variables)
     private int age = 21;
     private String name = "Beyonce";
 
