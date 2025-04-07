@@ -7,6 +7,7 @@ class Logical {
         int b = 11;
     
         boolean result = (num1 > num2) && (a < b); // use && for AND; use || for OR;
-        System.out.println(result);
+        System.out.println("RESULT: " + result);
+        System.out.println("RESULT with NOT operator: " + !result);
     }
 }
