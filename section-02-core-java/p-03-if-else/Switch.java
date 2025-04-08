@@ -28,7 +28,8 @@ public class Switch {
                 break;          
             default:
                 System.out.println("Enter a valid number");
-                break;
+                // do not use break here since this is the last case
+                // break;
         }
 
     }
