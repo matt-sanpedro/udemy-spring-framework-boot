@@ -19,6 +19,9 @@ public class Condition {
             System.out.println(x);
             System.out.println("x is greater than y and z");
         }
+        // below code line is redudant because 
+        // if x is not greater than y and z, then y must be greater than z
+        // else if (y>x && y>z) {
         else if(y>z){
             System.out.println(y);
             System.out.println("y is greater than x and z");
