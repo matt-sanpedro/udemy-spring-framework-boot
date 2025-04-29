@@ -3,6 +3,7 @@ class Mobile {
     String brand;
     int price;
     // to make name common for all, can use static keyword
+    // static variables are shared by all objects of the class
     static String name;
 
 
@@ -18,12 +19,13 @@ public class Demo {
         Mobile obj1 = new Mobile();
         obj1.brand = "Apple";
         obj1.price = 1500;
-        obj1.name = "SmartPhone";
+        // obj1.name = "SmartPhone";
+        Mobile.name = "Phone";
 
         Mobile obj2 = new Mobile();
         obj2.brand = "Samsung";
         obj2.price = 1700;
-        obj2.name = "SmartPhone";
+        // obj2.name = "SmartPhone";
 
         // static variables should be called with static class name
         Mobile.name = "Phone";
