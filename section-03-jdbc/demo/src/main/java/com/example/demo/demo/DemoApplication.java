@@ -1,7 +1,10 @@
 package com.example.demo.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.core.env.Environment;
 
 import java.sql.*;
 
@@ -48,9 +51,21 @@ public class DemoApplication {
 		String url = "jdbc:postgresql://localhost:5432/demo";
 		String user = "postgres";
 		String password = "";
+
 		try {
 			Connection con = DriverManager.getConnection(url, user, password);
 			System.out.println("Connection established successfully");
+			Statement st = con.createStatement();
+			String query = "select * from student;";
+			// ResultSet is an interface, not a class
+			ResultSet rs = st.executeQuery(query);
+			// System.out.println("Data available: " + rs.next());
+			// must call the next method to move the cursor to the first row
+			while (rs.next()) {
+				System.out.println(rs.getInt("sid") + " - " + rs.getString("sname") + " - " + rs.getInt("marks"));
+			}
+			con.close();
+			System.out.println("Connection closed");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
