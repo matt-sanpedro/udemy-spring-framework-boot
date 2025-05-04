@@ -57,7 +57,32 @@ public class DemoApplication {
 			System.out.println("Connection established successfully");
 			Statement st = con.createStatement();
 			String query = "select * from student;";
-			// ResultSet is an interface, not a class
+			// String createQuery = "insert into student values (6, 'Merri', 91);";
+			// String updateQuery = "update student set sname='Max' where sid=5;";
+			// String deleteQuery = "delete from student where sid=5;";
+			int sid = 102;
+			String sname = "Jasmine";
+			int marks = 87;
+
+			// concatenation is not recommended in SQL queries
+			/*
+			 * concatenation is not recommended in SQL queries
+			 * 1. it can lead to SQL injection attacks
+			 * 2. tedious and can lead to syntax errors
+			 * 3. use a prepared statement instead
+			 * 4. prepared statement is more efficient due to caching
+			 */
+			// String insertQuery = "insert into student values (" + sid + ", '" + sname + "', " + marks + ");";
+			String insertQuery = "insert into student values (?, ?, ?);";
+			PreparedStatement ps = con.prepareStatement(insertQuery);
+			ps.setInt(1, sid);
+			ps.setString(2, sname);
+			ps.setInt(3, marks);
+			ps.execute();
+			// // ResultSet is an interface, not a class
+			// boolean status = st.execute((createQuery));
+			// System.out.println("Data inserted: " + status);
+			// st.execute((insertQuery));
 			ResultSet rs = st.executeQuery(query);
 			// System.out.println("Data available: " + rs.next());
 			// must call the next method to move the cursor to the first row
