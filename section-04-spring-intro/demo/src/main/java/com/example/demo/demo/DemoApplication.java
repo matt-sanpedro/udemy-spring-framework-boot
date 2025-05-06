@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 
+import com.example.demo.demo.model.Alien;
+
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 public class DemoApplication {
 
