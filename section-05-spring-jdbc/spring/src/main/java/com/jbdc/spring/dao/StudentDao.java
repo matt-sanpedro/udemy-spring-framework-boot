@@ -5,6 +5,7 @@ import com.jbdc.spring.model.Student;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +43,38 @@ public class StudentDao {
          * ArrayList will hold. For instance, new ArrayList<String>() creates an ArrayList that 
          * can only store String objects.
          */
-        List<Student> students = new ArrayList<>();
-        return students;
-    }
+        // List<Student> students = new ArrayList<>();
+        // return students;
+        String sql = "select * from student";
 
+        // // APPROACH 1: Standard application of interface
+        // RowMapper<Student> mapper = new RowMapper<Student>() {
+        //     @Override
+        //     /*
+        //      * The mapRow method is called for each row of the ResultSet. It takes the current row
+        //      * number and the ResultSet as parameters. The method is responsible for mapping the
+        //      * current row of the ResultSet to a new object of type Student.
+        //      * 
+        //      * In addition, mapRow takes one row at a time
+        //      */
+        //     public Student mapRow(java.sql.ResultSet rs, int rowNum) throws java.sql.SQLException {
+        //         Student s = new Student();
+        //         s.setRollNo(rs.getInt("rollno"));
+        //         s.setName(rs.getString("name"));
+        //         s.setMarks(rs.getInt("marks"));
+        //         return s;
+        //     }
+        // };
+        // return jdbc.query(sql, mapper);
+
+        // APPROACH 2: Lambda expression
+        return jdbc.query(sql, (rs, rowNum) -> {
+                Student s = new Student();
+                s.setRollNo(rs.getInt("rollno"));
+                s.setName(rs.getString("name"));
+                s.setMarks(rs.getInt("marks"));
+                return s;
+        });
+
+    }
 }
