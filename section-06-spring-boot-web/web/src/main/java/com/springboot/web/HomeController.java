@@ -19,12 +19,25 @@ public class HomeController {
         return "index.jsp";
     }
 
+    // SOLUTION 1: using the session object from HttpSession
+    // @RequestMapping("add")
+    // public String add(HttpServletRequest req, HttpSession session) {
+    //     System.out.println("In add");
+    //     int num1 = Integer.parseInt(req.getParameter("num1"));
+    //     int num2 = Integer.parseInt(req.getParameter("num2"));
+    //     int result = num1 + num2;
+    //     System.out.println("Result is: " + result);
+
+    //     // in servlets, the session object can be used to store the result
+    //     session.setAttribute("result", result);
+    //     return "result.jsp";
+    // }
+
+    // SOLUTION 2: using the RequestParam
     @RequestMapping("add")
-    public String add(HttpServletRequest req, HttpSession session) {
+    public String add(@RequestParam("num1") int firstNumber, @RequestParam("num2") int secondNumber, HttpSession session) {
         System.out.println("In add");
-        int num1 = Integer.parseInt(req.getParameter("FirstNumber"));
-        int num2 = Integer.parseInt(req.getParameter("SecondNumber"));
-        int result = num1 + num2;
+        int result = firstNumber + secondNumber;
         System.out.println("Result is: " + result);
 
         // in servlets, the session object can be used to store the result
