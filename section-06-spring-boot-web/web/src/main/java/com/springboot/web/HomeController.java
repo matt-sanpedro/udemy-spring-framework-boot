@@ -18,7 +18,7 @@ public class HomeController {
     public String home() {
         System.out.println("In Home landing /");
         // JSP: JavaServer Pages, is a technology for creating dynamic weg pages
-        return "index.jsp";
+        return "index";
     }
 
     // SOLUTION 1: using the session object from HttpSession
@@ -46,6 +46,6 @@ public class HomeController {
         session.setAttribute("result", result);
         // MODEL: interface to pass data from controller to view (or JSP in this case)
         model.addAttribute("result", result);
-        return "result.jsp";
+        return "result";
     }
 }
