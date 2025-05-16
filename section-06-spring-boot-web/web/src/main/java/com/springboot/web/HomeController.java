@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import org.springframework.ui.Model;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -16,6 +17,7 @@ public class HomeController {
     @RequestMapping("/")
     public String home() {
         System.out.println("In Home landing /");
+        // JSP: JavaServer Pages, is a technology for creating dynamic weg pages
         return "index.jsp";
     }
 
@@ -35,13 +37,15 @@ public class HomeController {
 
     // SOLUTION 2: using the RequestParam
     @RequestMapping("add")
-    public String add(@RequestParam("num1") int firstNumber, @RequestParam("num2") int secondNumber, HttpSession session) {
+    public String add(@RequestParam("num1") int firstNumber, @RequestParam("num2") int secondNumber, Model model, HttpSession session) {
         System.out.println("In add");
         int result = firstNumber + secondNumber;
         System.out.println("Result is: " + result);
 
         // in servlets, the session object can be used to store the result
         session.setAttribute("result", result);
+        // MODEL: interface to pass data from controller to view (or JSP in this case)
+        model.addAttribute("result", result);
         return "result.jsp";
     }
 }
