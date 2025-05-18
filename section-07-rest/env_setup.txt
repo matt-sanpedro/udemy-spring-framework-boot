@@ -1,0 +1,18 @@
+### INSTALLATION INSTRUCTIONS FOR UBUNTU (LINUX DISTRIBUTION) ###
+# To use nodeenv on Linux, you first need to install it within a Python virtual environment #
+
+# INSTALL PIP3 #
+sudo apt install python3-pip
+
+# INSTALL VIRTUAL ENVIRONMENT #
+sudo apt install python3-virtualenv
+
+# Create a Python virtual environment #
+virtualenv nenv
+
+# Activate the virtual environment #
+source venv/bin/activate
+
+# Install the nodejs environment #
+pip install nodeenv
+
